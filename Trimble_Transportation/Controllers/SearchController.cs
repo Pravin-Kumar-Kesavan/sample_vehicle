@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Trimble_Transportation.Models;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace Trimble_Transportation.Controllers
+{
+    [Route("api/[controller]")]
+    public class SearchController : Controller
+    {
+        // GET: api/<controller>
+        [HttpGet]
+        public string Get()
+        {
+            return SearchData.getInstance().getVehicleInfo();
+        }
+
+        // GET api/<controller>/5
+        [HttpGet("{vin}")]
+        public string Get(int vin)
+        {
+            return SearchData.getInstance().getVehicleInfoVIN(vin.ToString());
+        }
+
+    }
+}
